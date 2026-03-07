@@ -1,0 +1,148 @@
+.text-center {
+    text-align: center;
+}
+
+.totals-list {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+}
+
+.total-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.total-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.person-name {
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.person-amount {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #34d399;
+    /* Emerald color for money */
+}
+
+.payment-section {
+    background: rgba(124, 58, 237, 0.05);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.payment-section h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.125rem;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qr-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: var(--spacing-md);
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.qr-preview {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-bottom: var(--spacing-sm);
+}
+
+.receiver-text {
+    color: #1a1b26;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.summary-footer {
+    margin-top: var(--spacing-xl);
+}
+
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    body::before,
+    body::after {
+        display: none !important;
+    }
+
+    .app-header {
+        color: black !important;
+        text-shadow: none !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    .person-name {
+        color: black !important;
+        -webkit-text-fill-color: black !important;
+    }
+
+    .glass-card,
+    .summary-card {
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: black !important;
+    }
+
+    .totals-list {
+        background: none !important;
+        border: 1px solid #ccc !important;
+    }
+
+    .total-item {
+        border-bottom: 1px solid #eee !important;
+    }
+
+    .person-amount {
+        color: black !important;
+    }
+
+    /* Hide interactive elements and back buttons */
+    .summary-footer,
+    .header-actions,
+    .payment-section,
+    .step-indicator {
+        display: none !important;
+    }
+
+    /* Show images only when printing */
+    .print-only-images {
+        display: block !important;
+        page-break-inside: avoid;
+    }
+}
