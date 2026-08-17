@@ -48,7 +48,7 @@ const Summary = () => {
 
             const total = foodSubtotal + myProportionalShare + equalSharePerPerson + myExtraCharges;
 
-            return { ...p, total, foodSubtotal, myProportionalShare, equalSharePerPerson, myExtraCharges };
+            return { ...p, total, foodSubtotal, myProportionalShare, equalSharePerPerson, myExtraCharges, myItems };
         });
 
         setTotals(calculatedTotals);
@@ -116,9 +116,35 @@ const Summary = () => {
 
             <div className="totals-list">
                 {totals.map(p => (
-                    <div key={p.id} className="total-item">
-                        <span className="person-name">{p.name}</span>
-                        <span className="person-amount">₹{p.total.toFixed(2)}</span>
+                    <div key={p.id} className="total-item-container">
+                        <div className="total-item">
+                            <span className="person-name">{p.name}</span>
+                            <span className="person-amount">₹{p.total.toFixed(2)}</span>
+                        </div>
+                        {p.myItems && p.myItems.length > 0 && (
+                            <div className="person-items-list print-only-list">
+                                {p.myItems.map(item => {
+                                    const shareNum = item.sharedBy.length || 1;
+                                    const itemPrice = parseFloat(item.price) || 0;
+                                    const sharePrice = itemPrice / shareNum;
+                                    const shareText = shareNum === 1 ? "1" : `1/${shareNum}`;
+
+                                    return (
+                                        <div key={item.id} className="person-item-row">
+                                            <span>{item.name || 'Unnamed Item'} (Qty: {shareText})</span>
+                                            <span>₹{sharePrice.toFixed(2)}</span>
+                                        </div>
+                                    );
+                                })}
+
+                                {(p.myProportionalShare > 0 || p.equalSharePerPerson > 0 || p.myExtraCharges > 0) && (
+                                    <div className="person-item-row extra-charges-row">
+                                        <span>+ Extra Charges & Tax</span>
+                                        <span>₹{(p.myProportionalShare + p.equalSharePerPerson + p.myExtraCharges).toFixed(2)}</span>
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
