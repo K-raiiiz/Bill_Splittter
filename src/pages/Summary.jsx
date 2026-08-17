@@ -131,7 +131,7 @@ const Summary = () => {
 
                                     return (
                                         <div key={item.id} className="person-item-row">
-                                            <span>{item.name || 'Unnamed Item'} (Qty: {shareText})</span>
+                                            <span>{item.name || 'Unnamed Item'}</span>
                                             <span>₹{sharePrice.toFixed(2)}</span>
                                         </div>
                                     );

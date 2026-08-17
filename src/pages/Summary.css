@@ -51,7 +51,6 @@
     margin-top: 4px;
     font-style: italic;
     color: #94a3b8;
-    /* slate-400 */
 }
 
 /* Hide on screen to keep summary clean, show only on print */
@@ -120,15 +119,8 @@
     margin-top: var(--spacing-xl);
 }
 
-@page {
-    /* Hide headers and footers including URL during printing */
-    margin: 0mm;
-}
-
 @media print {
     body {
-        /* Add some padding so content isn't flush against edge of paper */
-        padding: 1cm !important;
         background: white !important;
         color: black !important;
         margin: 0;
@@ -177,6 +169,7 @@
         /* overrides display:none on screen */
         border-left: 2px solid #ddd !important;
         margin-top: 4px !important;
+        padding-left: 12px !important;
     }
 
     .person-item-row {
@@ -205,4 +198,9 @@
         display: block !important;
         page-break-inside: avoid;
     }
+}
+
+@page {
+    /* Hide default browser headers and footers, including the URL */
+    margin: 0mm;
 }
