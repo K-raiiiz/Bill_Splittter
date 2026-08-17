@@ -50,7 +50,8 @@
 .extra-charges-row {
     margin-top: 4px;
     font-style: italic;
-    color: #94a3b8; /* slate-400 */
+    color: #94a3b8;
+    /* slate-400 */
 }
 
 /* Hide on screen to keep summary clean, show only on print */
@@ -119,8 +120,15 @@
     margin-top: var(--spacing-xl);
 }
 
+@page {
+    /* Hide headers and footers including URL during printing */
+    margin: 0mm;
+}
+
 @media print {
     body {
+        /* Add some padding so content isn't flush against edge of paper */
+        padding: 1cm !important;
         background: white !important;
         color: black !important;
         margin: 0;
@@ -165,7 +173,8 @@
     }
 
     .person-items-list {
-        display: flex !important; /* overrides display:none on screen */
+        display: flex !important;
+        /* overrides display:none on screen */
         border-left: 2px solid #ddd !important;
         margin-top: 4px !important;
     }
