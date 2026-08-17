@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { SessionProvider } from './context/SessionContext';
 import StartSession from './pages/StartSession';
 import ItemEntry from './pages/ItemEntry';
@@ -9,7 +9,7 @@ import './App.css';
 function App() {
   return (
     <SessionProvider>
-      <BrowserRouter>
+      <HashRouter>
         <div className="app-container" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
           <header className="app-header">
             <h1>BillSplit</h1>
@@ -28,7 +28,7 @@ function App() {
           </main>
           <Footer />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </SessionProvider>
   );
 }
